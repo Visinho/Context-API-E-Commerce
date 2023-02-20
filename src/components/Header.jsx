@@ -9,7 +9,7 @@ import { Button } from 'react-bootstrap';
 
 const Header = () => {
 
-    const { state: { cart }, dispatch} = CartState();
+    const { state: { cart }, dispatch, productDispatch} = CartState();
   
     return (
     <Navbar bg="dark" variant="dark" style={{height: "80px"}} fluid>
@@ -21,6 +21,12 @@ const Header = () => {
                 <FormControl style={{width: "500px"}}
                     placeholder="Search a product"
                     className='m-auto'
+                    onChange={(e) => 
+                        productDispatch({
+                            type: "SORT_BY_SEARCH",
+                            payload: e.target.value,
+                        })
+                    }
                 />
             </Navbar.Text>
             <Nav fluid>
